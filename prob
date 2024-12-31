@@ -1,0 +1,128 @@
+let isTimerRunning = false;
+    let pomodoroTime = 25 * 60; // 25 minutes in seconds
+    let breakTime = 5 * 60; // 5 minutes in seconds
+    let timerInterval;
+
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const timeDisplay = document.getElementById('timeDisplay');
+
+    startButton.addEventListener('click', function() {
+      if (isTimerRunning) return;
+
+      isTimerRunning = true;
+      startButton.disabled = true;
+      startTimer(pomodoroTime);
+    });
+
+    stopButton.addEventListener('click', function() {
+      if (!isTimerRunning) return;
+
+      clearInterval(timerInterval);
+      resetTimer();
+    });
+
+    function startTimer(duration) {
+      let timeLeft = duration;
+      timerInterval = setInterval(function() {
+        timeLeft--;
+        updateTimeDisplay(timeLeft);
+
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          if (duration === pomodoroTime) {
+            notifyBreak();
+            startTimer(breakTime);
+          } else {
+            resetTimer();
+          }
+        }
+      }, 1000);
+    }
+
+    function updateTimeDisplay(timeLeft) {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timeDisplay.textContent = `${padTime(minutes)}:${padTime(seconds)}`;
+
+      const percentage = ((pomodoroTime - timeLeft) / pomodoroTime) * 100;
+      document.querySelector('.circle').style.background = `conic-gradient(#000 ${percentage}%, #f0f0f0 ${percentage}%)`;
+    }
+
+    function padTime(time) {
+      return time < 10 ? '0' + time : time;
+    }
+
+    function notifyBreak() {
+      alert("Time's up! Take a 5-minute break.");
+    }
+
+    function resetTimer() {
+      isTimerRunning = false;
+      startButton.disabled = false;
+      timeDisplay.textContent = '25:00';
+      document.querySelector('.circle').style.background = 'conic-gradient(#000 0%, #f0f0f0 0%)';
+    }
+    let timer;
+        let timeRemaining;
+
+        function startTimer() {
+            const timeInput = document.getElementById("time").value;
+            if (timeInput < 1 || timeInput > 120) {
+                alert("Please enter a valid time between 1 and 120 minutes.");
+                return;
+            }
+
+            timeRemaining = timeInput * 60;
+            document.getElementById("timer-display").innerText = formatTime(timeRemaining);
+
+            // Hide the timer settings and show the timer display
+            document.querySelector(".timer-settings").style.display = "none";
+            document.getElementById("review-section").style.display = "none";
+
+            // Start the countdown
+            timer = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            timeRemaining--;
+            document.getElementById("timer-display").innerText = formatTime(timeRemaining);
+
+            if (timeRemaining <= 0) {
+                clearInterval(timer);
+                document.getElementById("timer-sound").play(); // Play sound when time is up
+                showReviewSection();
+                document.getElementById("stop-music-btn").style.display = "inline-block"; // Show stop music button
+            }
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+        }
+
+        function showReviewSection() {
+            document.getElementById("review-section").style.display = "block";
+        }
+
+        function submitReview() {
+            const review = document.getElementById("review-box").value;
+            if (review.trim() === "") {
+                alert("Please write your thoughts before submitting.");
+                return;
+            }
+            alert("Thank you for your review!");
+            document.getElementById("review-box").value = ""; // Clear the review box
+            document.querySelector(".timer-settings").style.display = "block"; // Show the timer settings again
+            document.getElementById("timer-display").innerText = "";
+            document.getElementById("review-section").style.display = "none";
+            document.getElementById("stop-music-btn").style.display = "none"; // Hide stop music button
+        }
+
+        // Function to stop the music
+        function stopMusic() {
+            document.getElementById("timer-sound").pause();
+            document.getElementById("timer-sound").currentTime = 0; // Reset sound to start
+            document.getElementById("stop-music-btn").style.display = "none"; // Hide the stop music button
+        }

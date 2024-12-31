@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=900">
+    <title>Responsive Navbar</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(247, 247, 90);
+            color: #333;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        .navbar .logo a {
+            display: block;
+        }
+
+        .logo-img {
+            width: 75px;
+            height: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Navbar */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #333;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        /* Content Section */
+        .content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        /* Meditation Section */
+        .meditation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 90%;
+            gap: 20px;
+        }
+
+        .meditation-image {
+            max-width: 30%;
+            height: auto;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .details {
+            max-width: 50%;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .details h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .details p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .meditation1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 90%;
+            gap: 20px;
+            flex-direction: row-reverse; /* Reverses the order of elements */
+        }
+
+        .meditation1-image {
+            max-width: 30%;
+            height: auto;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        .details1 {
+            max-width: 50%;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .details1 h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .details1 p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+        /* focus Section */
+        .focus {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 90%;
+            gap: 20px;
+        }
+
+        .focus-image {
+            max-width: 30%;
+            height: auto;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .details {
+            max-width: 50%;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .details h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .details p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .focus1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 90%;
+    gap: 20px;
+    flex-direction: row-reverse; /* Reverses the order of elements */
+}
+
+.focus1-image {
+    max-width: 30%;
+    height: auto;
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.details1 {
+    max-width: 50%;
+    padding: 20px;
+    text-align: left;
+}
+
+.details1 h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.details1 p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+.focus2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 90%;
+    gap: 20px;
+    /*flex-direction: row-reverse; /* Reverses the order of elements */
+}
+
+.focus2-image {
+    max-width: 30%;
+    height: auto;
+    border: 5px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.details2 {
+    max-width: 50%;
+    padding: 20px;
+    text-align: left;
+}
+
+.details2 h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.details2 p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.details4 {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 600px; /* Optional: limits the width */
+    margin: 0 auto; /* Centers the div horizontally */
+    text-align: center; /* Centers the text */
+    padding: 20px; /* Optional: adds padding around the content */
+    background-color: #f7fdc0; /* Optional: adds background color */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+.details4 h1 {
+    font-size: 2em; /* Adjusts the size of the heading */
+    margin-bottom: 20px; /* Adds space below the heading */
+}
+
+.details4 p {
+    font-size: 1.2em; /* Adjusts the size of the paragraphs */
+    line-height: 1.6; /* Adds line height for readability */
+    margin-bottom: 10px; /* Adds space between paragraphs */
+}
+
+
+.timer-container {
+      text-align: center;
+    }
+    .circle {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 10px solid #000; /* Black border */
+      background: conic-gradient(#000 0deg, #f0f0f0 0deg); /* Black circle progress */
+      margin: 0 auto;
+    }
+    .circle-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #000; /* Black text */
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      background-color: #000; /* Black button */
+      color: #fff; /* White text on button */
+      border: none;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #333; /* Darker black hover effect */
+    }
+
+    .center-wrapper {
+    display: flex;
+    justify-content: center; /* Centers the containers horizontally */
+    align-items: center; /* Aligns the containers to the top */
+    flex-direction: column; /* Stacks the containers vertically */
+    margin-top: 20px; /* Adds space between the previous content and this section */
+}
+
+.container {
+    text-align: center;
+    background-color: rgb(250, 250, 190);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin-bottom: 20px; /* Adds space between the two containers */
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.timer-settings {
+    margin-bottom: 20px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: darkslategray;
+}
+
+#timer-display {
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+#review-section {
+    margin-top: 30px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#stop-music-btn {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+#stop-music-btn:hover {
+    background-color: #e53935;
+}
+   
+.container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f7fdc0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .task-list li {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .task-list li div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .task-list li button {
+            background: #ff5252;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .task-list li button:hover {
+            background: #e53935;
+        }
+        .add-task {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .add-task input, .add-task button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-task button {
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+        .add-task button:hover {
+            background: gray;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: black;
+        }
+
+        
+    .container {
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f7fdc0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: black;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: gray;
+    }
+    #quote, #joke {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    #author {
+      font-style: italic;
+      color: #555;
+    }
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid black;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    header {
+            background: #6200ea;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .mood-buttons, .custom-mood {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .mood-buttons button, .custom-mood input, .custom-mood button, .reset-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .custom-mood input {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .custom-mood button, .reset-button {
+            background-color: #6200ea;
+            color: white;
+        }
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .dashboard-item {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 10px;
+            background: #f9f9f9;
+        }
+        #charts {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .chart-container {
+            width: 70%;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="1692687557638.png" alt="Logo" class="logo-img"></a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a onclick="showSection('focus_mode')">Focus Mode</a></li>
+            <li><a onclick="showSection('meditation')">Meditation</a></li>
+            <li><a onclick="showSection('daily_reminders')">Daily Reminders</a></li>
+            <li><a onclick="showSection('jokes')">Quotes & Jokes</a></li>
+            <li><a onclick="showSection('mood_tracking')">Mood Tracking</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+    
+    <!-- Content Sections -->
+    <div id="focus_mode" class="content">
+        <h1>Focus Mode</h1>
+        <p>Focus Mode helps you stay productive by minimizing distractions. Use it to achieve your goals!</p>
+        <div class="focus">
+            <img src="focus-mode-concept-illustration_114360-6949.avif" alt="focus" class="focus-image">
+            <div class="details">
+                <h1>How to Focus?</h1>
+                <p>
+                    Focus is a crucial aspect of productivity and personal effectiveness. There are various methods to improve focus, and one of the most popular techniques is the Pomodoro Technique. The Pomodoro Technique involves working in focused intervals, typically 25 minutes long, followed by short breaks. This method helps maintain high levels of concentration and productivity by preventing burnout and promoting regular rest periods. 
+                    Another form of focus is mindfulness, which encourages being present in the moment and fully engaged with the task at hand. Combining different focus strategies can significantly enhance your ability to concentrate and achieve your goals efficiently.
+                </p>
+            </div>
+        </div>
+        <div class="focus1">
+        <img src="hh.jpg"alt="focus" class="focus1-image">
+        <div class="details1">
+            <h1>Focus on Your Goals</h1>
+            <p>
+                Mindfulness is about staying present and focusing on the task at hand. By dedicating uninterrupted time to your goals, you can achieve more and reduce stress. When enabled, this mode minimizes distractions by silencing notifications from apps, helping you maintain complete focus and avoid interruptions that can derail your concentration.
+            </p>
+        </div>
+    </div>
+    <div class="focus2">
+        <img src="best-pomodoro-apps-blog-header-main-1.png"alt="focus" class="focus2-image">
+        <div class="details2">
+            <h1>Pomodoro Timer</h1>
+            <p>
+                The Pomodoro Timer is a productivity tool designed to help you manage your time effectively by breaking work into focused intervals, typically 25 minutes, followed by short breaks. This method, known as the Pomodoro Technique, encourages sustained concentration and prevents burnout. By alternating between work sessions and breaks, the timer promotes better time management, enhances focus, and boosts productivity. Whether you're tackling tasks, studying, or working on creative projects, the Pomodoro Timer serves as a simple yet powerful tool to maintain momentum and achieve your goals efficiently.
+            </p>
+        </div>
+    </div>
+    <div class="timer-container">
+        <div class="circle">
+          <div class="circle-text" id="timeDisplay">25:00</div>
+        </div>
+        <button class="button" id="startButton">Start</button>
+        <button class="button" id="stopButton">Stop</button><br>
+        <br><b><p>When you start, you cannot show any notification.</p></b>
+      </div>
+    </div>
+
+    <div id="meditation" class="content">
+        
+            <h1>Meditation</h1>
+            <p>Explore guided meditation techniques to relax and improve your mindfulness.</p>
+            <div class="meditation">
+            <img src="mindfullness-TA.webp" alt="Mindfulness" class="meditation-image">
+            <div class="details">
+                <h1>What is Mindfulness?</h1>
+                <p>
+                    Mindfulness is the practice of being fully present and engaged in the current moment without judgment. 
+                    It involves focusing your attention on your thoughts, feelings, and environment in a calm and accepting way. 
+                    Mindfulness has roots in Buddhist meditation practices but has become widely recognized in psychology and wellness 
+                    as a tool for improving mental health and overall well-being.
+                </p>
+            </div>
+        </div>
+        <div class="meditation1">
+            <img src="how-to-meditate-1536x960.jpg" alt="Mindfulness" class="meditation1-image">
+            <div class="details1">
+                <h1>How to do meditation?</h1>
+                <p>
+                    Meditation is a powerful practice that enhances mindfulness, offering a range of benefits for mental, emotional, and physical well-being. By promoting focus and concentration, it trains the mind to stay present and reduces distractions. Regular meditation lowers stress and anxiety by calming the mind and reducing cortisol levels, while also improving emotional regulation, helping individuals respond thoughtfully to situations. It fosters self-awareness, enabling deeper introspection and personal growth, and enhances compassion and empathy, strengthening relationships. Physically, meditation supports better sleep, lowers blood pressure, and alleviates stress-related symptoms like headaches and muscle tension. Additionally, it boosts creativity, problem-solving skills, and decision-making by clearing mental clutter and fostering clarity. By cultivating patience, tolerance, and a sense of inner peace, meditation becomes a cornerstone for achieving mindfulness and living a balanced, present-focused life.
+                </p>
+            </div>
+        </div>
+        <div class="center-wrapper">
+            <div class="container">
+                <h1>Guided Meditation</h1><br>
+                <b>
+                    <p>1. Set a timer for how many minutes you would like to meditate.</p>
+                <p>2. When your meditation is complete, you will hear music.</p>
+                <p>3. Afterward, provide feedback on what you observed during the session.</p>
+
+                </b>
+            </div>
+        
+            <div class="container">
+                <h1>Meditation Timer</h1>
+                <div class="timer-settings">
+                    <label for="time">Set Timer (minutes):</label>
+                    <input type="number" id="time" min="1" max="120" placeholder="Enter minutes">
+                    <button onclick="startTimer()">Start Timer</button>
+                </div>
+                <div id="timer-display"></div>
+                <div id="review-section" style="display:none;">
+                    <h2>Time's Up!</h2>
+                    <p>How was your meditation? Please share your thoughts:</p>
+                    <textarea id="review-box" placeholder="Write your thoughts here..."></textarea>
+                    <button onclick="submitReview()">Submit Review</button>
+                </div>
+                <!-- Stop Music Button (hidden initially) -->
+                <button id="stop-music-btn" onclick="stopMusic()" style="display:none;">Stop Music</button>
+            </div>
+        </div>
+        <div class="meditation">
+            <img src="benefits.jpg" alt="Mindfulness" class="meditation-image">
+            <div class="details">
+                <h1>Benefits of meditation</h1>
+                <p>
+                    Meditation is a practice that helps calm the mind, improve focus, and reduce stress. By focusing on the present moment and observing your thoughts without judgment, you can create a sense of inner peace and relaxation. It involves deep breathing, mindfulness, and sometimes the use of soothing music to enhance the experience. Meditation has been shown to have numerous benefits, including lowering anxiety, improving emotional well-being, and promoting better sleep. Regular meditation practice can lead to increased self-awareness and a greater sense of balance in daily life.
+                </p>
+            </div>
+        </div>
+
+        <!-- Sound to play when timer ends -->
+<audio id="timer-sound" src="782294__josefpres__piano-loops-174-octave-up-short-loop-120-bpm.wav" preload="auto"></audio>
+</div>
+
+       
+        
+
+
+    <div id="daily_reminders" class="content">
+        <h1>Daily Reminders</h1>
+        <p>Set up daily reminders to keep track of your important tasks and habits.</p>
+        <div class="meditation">
+            <img src="dailyreminder.jpg" alt="Mindfulness" class="meditation-image">
+            <div class="details">
+                <h1>Productive Workday</h1>
+                <p>
+                    In the midst of our busy daily routines, taking a moment to pause and meditate can make a world of difference. Meditation helps us approach our work with clarity, focus, and a calm mind, enabling us to handle challenges with greater ease. It reduces stress and enhances our ability to prioritize tasks, making us more productive and efficient. By cultivating mindfulness, we can stay present in each task, improving the quality of our work and our overall satisfaction.
+                </p>
+            </div>
+        </div>
+        <div class="meditation1">
+            <img src="dailyreminder1.jpg" alt="Mindfulness" class="meditation1-image">
+            <div class="details1">
+                <h1> Your Daily Workflow</h1>
+                
+                <p>
+                    Let this be a gentle reminder to integrate mindfulness into your everyday workflow. Whether it’s a brief breathing exercise between meetings or a quick moment of stillness before starting a task, these small practices can have a big impact. Meditation isn’t about escaping work but approaching it with a refreshed perspective and renewed energy. As you move through your day, let mindfulness guide you to stay grounded, focused, and in control.
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <section class="task-section">
+                <h2>Today's Tasks</h2>
+                <p>Add on your's today's task</p>
+                <ul class="task-list" id="taskList"></ul>
+                <div class="add-task">
+                    <form id="taskForm">
+                        <label for="taskInput">Task:</label>
+                        <input type="text" id="taskInput" placeholder="Enter a task name " required><br>
+                
+                        <br><label for="startTime">Start Time:</label>
+                        <input type="time" id="startTime" required><br>
+                
+                        <br><label for="endTime">End Time:</label>
+                        <input type="time" id="endTime" required><br>
+                
+                        <button type="button" onclick="addTask()">Add Task</button>
+                    </form>
+                </div>
+                
+            </section>
+            <div id="message" class="message"></div>
+        </div>
+        <div class="meditation">
+            <img src="dr3.jpg" alt="Mindfulness" class="meditation-image">
+            <div class="details">
+                <h1>The Benefits of Daily Reminders</h1>
+                <p>
+                    Daily reminders offer a range of theoretical benefits that can significantly enhance productivity, well-being, and personal growth. By providing consistent nudges, they help individuals stay focused on their tasks and goals, reducing the likelihood of forgetting important responsibilities. This can lead to improved time management, as tasks are prioritized and deadlines are met. Daily reminders also serve as motivational tools, encouraging accountability and fostering a sense of accomplishment when tasks are completed. Over time, they contribute to the formation of positive habits, promoting consistency and self-discipline. Additionally, daily reminders reduce mental clutter, alleviate stress, and provide a sense of control, leading to improved mental clarity and overall well-being. They also help individuals stay aligned with their goals, ensuring steady progress and increasing the likelihood of success.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div id="jokes" class="content">
+        <h1>Jokes&Quotes</h1><br>
+        
+        <div class="meditation">
+            <img src="quote.jpg" alt="Mindfulness" class="meditation-image">
+            <div class="details">
+                <h1>Benefits of Inspirational Quotes</h1>
+                <p>
+                    Inspirational quotes provide a powerful way to uplift and motivate individuals. They serve as a quick dose of positivity, helping users reflect on their goals, overcome challenges, and maintain a hopeful outlook. Quotes from influential figures can resonate deeply, offering wisdom and guidance that can be applied to everyday life. By including quotes on a webpage, you create an environment that fosters personal growth and emotional well-being, leaving users with a sense of purpose and inspiration.
+                </p>
+            </div>
+        </div>
+        <div class="meditation1">
+            <img src="jokes.jpg" alt="Mindfulness" class="meditation1-image">
+            <div class="details1">
+                <h1> Advantages of Humor Through Jokes</h1>
+                
+                <p>
+                    Humor is a universal language that instantly connects with people. Including jokes on a webpage adds a touch of lightheartedness and fun, making the experience enjoyable and memorable. Laughter is known to reduce stress, improve mood, and even boost creativity. A joke section can encourage users to spend more time on the page, share the content with others, and return for more entertainment. This not only enhances user engagement but also creates a positive association with your webpage.
+                </p>
+            </div>
+        </div>
+        <h1>Quotes & Jokes </h1>
+
+  <div class="container" id="quote-section">
+    <h2>Inspirational Quote</h2>
+    <div class="loader" id="quote-loader"></div>
+    <p id="quote">Click the button to fetch a random quote!</p>
+    <p id="author">- Author</p>
+    <button id="fetch-quote">Get a Quote</button>
+  </div>
+
+  <div class="container" id="joke-section">
+    <h2>Funny Joke</h2>
+    <div class="loader" id="joke-loader"></div>
+    <p id="joke">Click the button to fetch a joke!</p>
+    <button id="fetch-joke">Get a Joke</button>
+  </div>
+    </div>
+
+    <div id="mood_tracking" class="content">
+        <h1>Mood Tracking</h1>
+        <p>Track your moods over time and gain insights into your emotional well-being.</p>
+        <div class="container">
+            <h2>How are you feeling today?</h2>
+            <div class="mood-buttons">
+                <button class="happy" onclick="trackMood('Happy')">Happy</button>
+                <button class="sad" onclick="trackMood('Sad')">Sad</button>
+                <button class="neutral" onclick="trackMood('Neutral')">Neutral</button>
+                <button class="angry" onclick="trackMood('Angry')">Angry</button>
+                <button class="excited" onclick="trackMood('Excited')">Excited</button>
+            </div>
+            <div class="custom-mood">
+                <input type="text" id="customMoodInput" placeholder="Enter custom mood">
+                <button onclick="addCustomMood()">Add Mood</button>
+            </div>
+            <div class="dashboard">
+                <div class="dashboard-item">
+                    <h3>Total Moods</h3>
+                    <p id="totalMoods">0</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Most Common Mood</h3>
+                    <p id="commonMood">N/A</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Last Mood</h3>
+                    <p id="lastMood">N/A</p>
+                </div>
+            </div>
+            <div id="charts">
+                <div class="chart-container">
+                    <canvas id="moodPieChart"></canvas>
+                </div>
+            </div>
+            <div class="reset-container">
+                <button class="reset-button" onclick="resetTracker()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        }
+
+        // Automatically open the "Focus Mode" section on page load
+        window.onload = function() {
+            showSection('focus_mode');
+        }
+//pomodoro ka code 
+let isTimerRunning = false;
+    let pomodoroTime = 25 * 60; // 25 minutes in seconds
+    let breakTime = 5 * 60; // 5 minutes in seconds
+    let timerInterval;
+
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const timeDisplay = document.getElementById('timeDisplay');
+
+    startButton.addEventListener('click', function() {
+      if (isTimerRunning) return;
+
+      isTimerRunning = true;
+      startButton.disabled = true;
+      stopButton.disabled = false;
+      startTimer(pomodoroTime);
+    });
+
+    stopButton.addEventListener('click', function() {
+      clearInterval(timerInterval);
+      resetTimer();
+    });
+
+    function startTimer(duration) {
+      let timeLeft = duration;
+      timerInterval = setInterval(function() {
+        timeLeft--;
+        updateTimeDisplay(timeLeft);
+
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          if (duration === pomodoroTime) {
+            notifyBreak();
+            startTimer(breakTime);
+          } else {
+            resetTimer();
+          }
+        }
+      }, 1000);
+    }
+
+    function updateTimeDisplay(timeLeft) {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timeDisplay.textContent = `${padTime(minutes)}:${padTime(seconds)}`;
+
+      const percentage = ((pomodoroTime - timeLeft) / pomodoroTime) * 100;
+      document.querySelector('.circle').style.background = `conic-gradient(#000 ${percentage}%, #f0f0f0 ${percentage}%)`;
+    }
+
+    function padTime(time) {
+      return time < 10 ? '0' + time : time;
+    }
+
+    function notifyBreak() {
+      alert("Time's up! Take a 5-minute break.");
+    }
+
+    function resetTimer() {
+      isTimerRunning = false;
+      startButton.disabled = false;
+      stopButton.disabled = true;
+      timeDisplay.textContent = '25:00';
+      document.querySelector('.circle').style.background = 'conic-gradient(#000 0%, #f0f0f0 0%)';
+    }
+   
+
+
+
+
+
+
+
+class MeditationTimer {
+  constructor() {
+    this.timer = null;
+    this.timeRemaining = 0;
+    this.audio = new Audio('782294__josefpres__piano-loops-174-octave-up-short-loop-120-bpm.wav'); // Replace with your music file path
+    this.audio.loop = true;
+    this.init();
+  }
+
+  init() {
+    document.querySelector("button[onclick='startTimer()']").addEventListener("click", () => this.start());
+    document.getElementById("stop-music-btn").addEventListener("click", () => this.stopMusic());
+    document.querySelector("button[onclick='submitReview()']").addEventListener("click", () => this.submitReview());
+  }
+
+  start() {
+    const timeInput = parseInt(document.getElementById("time").value);
+    const timerDisplay = document.getElementById("timer-display");
+    const reviewSection = document.getElementById("review-section");
+    const stopMusicBtn = document.getElementById("stop-music-btn");
+
+    if (isNaN(timeInput) || timeInput < 1 || timeInput > 120) {
+      alert("Please enter a valid time between 1 and 120 minutes.");
+      return;
+    }
+
+    this.timeRemaining = timeInput * 60;
+    timerDisplay.textContent = this.formatTime(this.timeRemaining);
+
+    // Hide timer settings and review section
+    document.querySelector(".timer-settings").style.display = "none";
+    reviewSection.style.display = "none";
+
+    // Start the countdown
+    clearInterval(this.timer);
+    this.timer = setInterval(() => this.updateTimer(timerDisplay, reviewSection, stopMusicBtn), 1000);
+  }
+
+  updateTimer(timerDisplay, reviewSection, stopMusicBtn) {
+    if (this.timeRemaining > 0) {
+      this.timeRemaining--;
+      timerDisplay.textContent = this.formatTime(this.timeRemaining);
+    } else {
+      this.end(timerDisplay, reviewSection, stopMusicBtn);
+    }
+  }
+
+  end(timerDisplay, reviewSection, stopMusicBtn) {
+    clearInterval(this.timer);
+    timerDisplay.textContent = "Time's Up!";
+    reviewSection.style.display = "block";
+    this.playSound();
+    stopMusicBtn.style.display = "inline-block"; // Show the stop music button
+  }
+
+  playSound() {
+    this.audio.play();
+  }
+
+  stopMusic() {
+    this.audio.pause();
+    this.audio.currentTime = 0; // Reset the audio to the start
+    document.getElementById("stop-music-btn").style.display = "none"; // Hide the stop music button
+  }
+
+  submitReview() {
+    const reviewBox = document.getElementById("review-box");
+    const review = reviewBox.value.trim();
+
+    if (review === "") {
+      alert("Please write your thoughts before submitting.");
+      return;
+    }
+
+    alert("Thank you for your review!");
+    reviewBox.value = ""; // Clear the review box
+
+    // Reset timer settings and hide review section
+    document.querySelector(".timer-settings").style.display = "block";
+    document.getElementById("timer-display").textContent = "";
+    document.getElementById("review-section").style.display = "none";
+    document.getElementById("stop-music-btn").style.display = "none"; // Hide stop music button
+  }
+
+  formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  }
+}
+
+// Initialize the Meditation Timer
+new MeditationTimer();
+
+
+
+
+
+
+
+
+
+
+        const taskList = document.getElementById('taskList');
+        const messageDiv = document.getElementById('message');
+
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const startTime = document.getElementById('startTime');
+            const endTime = document.getElementById('endTime');
+            const taskText = taskInput.value.trim();
+            const start = startTime.value;
+            const end = endTime.value;
+
+            if (!taskText || !start || !end) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            const startTimeParts = start.split(':').map(Number);
+            const endTimeParts = end.split(':').map(Number);
+            const duration = ((endTimeParts[0] - startTimeParts[0]) + (endTimeParts[1] - startTimeParts[1]) / 60).toFixed(2);
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${taskText}</span>
+                <div>
+                    <p>Time: ${start} - ${end} (${duration} hrs)</p>
+                    <button onclick="deleteTask(this)">Delete</button>
+                </div>
+            `;
+            taskList.appendChild(li);
+
+            const now = new Date();
+            const startDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...startTimeParts);
+            const endDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...endTimeParts);
+
+            setTimeout(() => {
+                if (Notification.permission === "granted") {
+                    new Notification("Task Reminder", {
+                        body: `Start your task: "${taskText}"`,
+                        icon: "https://via.placeholder.com/100x100?text=Task",
+                    });
+                }
+                messageDiv.textContent = `Time to start: "${taskText}"`;
+            }, startDateTime - now);
+
+            setTimeout(() => {
+                if (Notification.permission === "granted") {
+                    new Notification("Task Reminder", {
+                        body: `Task "${taskText}" completed. Ready for the next task!`,
+                        icon: "https://via.placeholder.com/100x100?text=Task",
+                    });
+                }
+                messageDiv.textContent = `Task "${taskText}" completed! Ready for the next task.`;
+            }, endDateTime - now);
+
+            taskInput.value = '';
+            startTime.value = '';
+            endTime.value = '';
+        }
+
+        function deleteTask(button) {
+            const li = button.parentElement.parentElement;
+            taskList.removeChild(li);
+        }
+        const fetchQuoteButton = document.getElementById("fetch-quote");
+    const quoteContainer = document.getElementById("quote");
+    const authorContainer = document.getElementById("author");
+    const quoteLoader = document.getElementById("quote-loader");
+
+    const fetchJokeButton = document.getElementById("fetch-joke");
+    const jokeContainer = document.getElementById("joke");
+    const jokeLoader = document.getElementById("joke-loader");
+
+    const apiKey = "YOUR_API_KEY_HERE"; // Replace with your actual API key
+
+    async function fetchQuote() {
+      quoteLoader.style.display = "block";
+      quoteContainer.textContent = "";
+      authorContainer.textContent = "";
+      try {
+        const response = await fetch("https://api.api-ninjas.com/v1/quotes?category=inspirational", {
+          headers: { "X-Api-Key": apiKey }
+        });
+        const data = await response.json();
+        if (data && data.length > 0) {
+          quoteContainer.textContent = `"${data[0].quote}"`;
+          authorContainer.textContent = `- ${data[0].author || "Unknown"}`;
+        } else {
+          quoteContainer.textContent = "No quotes found! Try again later.";
+        }
+      } catch (error) {
+        quoteContainer.textContent = "Error fetching the quote! Please try again.";
+        console.error(error);
+      } finally {
+        quoteLoader.style.display = "none";
+      }
+    }
+
+    async function fetchJoke() {
+      jokeLoader.style.display = "block";
+      jokeContainer.textContent = "";
+      try {
+        const response = await fetch("https://api.api-ninjas.com/v1/jokes", {
+          headers: { "X-Api-Key": apiKey }
+        });
+        const data = await response.json();
+        if (data && data.length > 0) {
+          jokeContainer.textContent = data[0].joke;
+        } else {
+          jokeContainer.textContent = "No joke found! Try again later.";
+        }
+      } catch (error) {
+        jokeContainer.textContent = "Error fetching the joke! Please try again.";
+        console.error(error);
+      } finally {
+        jokeLoader.style.display = "none";
+      }
+    }
+
+    fetchQuoteButton.addEventListener("click", fetchQuote);
+    fetchJokeButton.addEventListener("click", fetchJoke);
+
+
+    let moodLog = JSON.parse(localStorage.getItem('moodLog')) || [];
+        let moodPieChart;
+
+        function trackMood(mood) {
+            const timestamp = new Date().toISOString();
+            moodLog.push({ mood, timestamp });
+            localStorage.setItem('moodLog', JSON.stringify(moodLog));
+            updateDashboard();
+            updateCharts();
+        }
+
+        function addCustomMood() {
+            const customMood = document.getElementById('customMoodInput').value.trim();
+            if (customMood) {
+                trackMood(customMood);
+                document.getElementById('customMoodInput').value = '';
+            }
+        }
+
+        function updateDashboard() {
+            const totalMoods = moodLog.length;
+            const lastMood = moodLog[moodLog.length - 1]?.mood || 'N/A';
+            const moodCounts = {};
+            moodLog.forEach(entry => {
+                moodCounts[entry.mood] = (moodCounts[entry.mood] || 0) + 1;
+            });
+            const commonMood = Object.keys(moodCounts).reduce((a, b) => moodCounts[a] > moodCounts[b] ? a : b, 'N/A');
+
+            document.getElementById('totalMoods').textContent = totalMoods;
+            document.getElementById('lastMood').textContent = lastMood;
+            document.getElementById('commonMood').textContent = commonMood;
+        }
+
+        function updateCharts() {
+            const counts = {};
+            moodLog.forEach(entry => {
+                counts[entry.mood] = (counts[entry.mood] || 0) + 1;
+            });
+
+            const ctxPie = document.getElementById('moodPieChart').getContext('2d');
+            if (moodPieChart) moodPieChart.destroy();
+
+            moodPieChart = new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(counts),
+                    datasets: [{
+                        data: Object.values(counts),
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+                    }]
+                }
+            });
+        }
+
+        function resetTracker() {
+            moodLog = [];
+            localStorage.removeItem('moodLog');
+            updateDashboard();
+            updateCharts();
+        }
+
+        updateDashboard();
+        updateCharts();
+
+    </script>
+</body>
+</html>
