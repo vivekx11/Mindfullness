@@ -23,7 +23,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #333;
+            background-color: black;
             padding: 10px 20px;
         }
 
@@ -645,6 +645,77 @@ textarea {
         <br><b><p>When you start, you cannot show any notification.</p></b>
       </div>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>&copy; 2024 Mindfullness. All rights reserved.</p>
+                <p>Created by "viveksawji"</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/vivekx___" target="_blank">Instagram</a> | 
+                <a href="https://github.com/vivekx11" target="_blank">GitHub</a> |
+                <a href="mailto:viveksawji@gmai.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+        /* Footer styling */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 35px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    
+        .footer-left p {
+            font-size: 20px;
+            margin: 0;
+        }
+    
+        .footer-right a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+    
+        .footer-right a:hover {
+            color: #ff9800;
+        }
+    
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            .footer-right {
+                margin-top: 10px;
+            }
+        }
+    
+        /* Ensure content does not overlap footer */
+        body {
+            padding-bottom: 80px; /* Adjust based on footer height */
+        }
+    </style>
+    
 
     <div id="meditation" class="content">
         
